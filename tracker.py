@@ -100,10 +100,16 @@ def load_igns(input_file):
     igns = []
     with open(input_file, mode='r', encoding='utf-8') as f:
         reader = csv.reader(f)
-        next(reader)  # skip header
+        try:
+            next(reader)  # skip header row
+        except StopIteration:
+            print(f"⚠️  {input_file} is empty. Add 'IGN' as the first line, then one player IGN per line below it.")
+            return []
         for row in reader:
             if row and row[0].strip():
                 igns.append(row[0].strip())
+    if not igns:
+        print(f"⚠️  No IGNs found in {input_file}. Add player names below the 'IGN' header.")
     return igns
 
 
@@ -353,6 +359,9 @@ def pull_draft_stats(igns, output_file):
 
 
 if __name__ == "__main__":
-    igns = load_igns('IGNs.csv')
+    import os
+    input_file = 'Master_IGNs.csv' if os.path.exists('Master_IGNs.csv') else 'IGNs.csv'
+    print(f"Using input file: {input_file}")
+    igns = load_igns(input_file)
     pull_draft_stats(igns, 'IGN_stats.csv')
     print("Done! Check IGN_stats.csv")
