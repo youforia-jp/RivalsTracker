@@ -1,4 +1,8 @@
 # ── Real player data (never commit) ──────────────────────────────────────────
+# These are the live files you fill in locally — kept out of git for privacy.
+IGNs.csv
+IGN_stats.csv
+# Legacy names (kept for safety)
 Rivals_Draft.csv
 draft_stats.csv
 

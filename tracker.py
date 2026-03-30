@@ -353,6 +353,6 @@ def pull_draft_stats(igns, output_file):
 
 
 if __name__ == "__main__":
-    igns = load_igns('ign_SAMPLE.csv')
-    pull_draft_stats(igns, 'draft_stats_SAMPLE.csv')
-    print("Done! Check draft_stats_SAMPLE.csv")
+    igns = load_igns('IGNs.csv')
+    pull_draft_stats(igns, 'IGN_stats.csv')
+    print("Done! Check IGN_stats.csv")
